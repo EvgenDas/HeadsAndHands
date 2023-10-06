@@ -1,2 +1,9 @@
-package creatures;public enum CreatureType {
+package creatures;
+
+/**
+ * Enumeration of species of creatures
+ */
+
+public enum CreatureType {
+  PLAYER, MONSTER
 }

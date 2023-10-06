@@ -1,3 +1,5 @@
+package example;
+
 import creatures.Creature;
 import creatures.CreatureType;
 import factory.CreatureFactory;
@@ -7,21 +9,35 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Example of using created classes.
+ * <br>
+ * 1 player and 10 monsters are created.
+ * <br>
+ * There are 4 waves of monsters attacking the player.
+ * <br>
+ * In the 1st wave there is 1 monster, in the second 2, in the third 3, in the fourth 4.
+ * <br>
+ * Their battle is logged, and the current result is displayed.
+ * <br>
+ * As well as the result
+ */
+
 public class Example {
 
   private Creature player;
   private List<Creature> monsters;
-
   private final CreatureFactory factory = new CreatureFactory();
-
   public static final Logger logger = Logger.getLogger(Example.class.getName());
-
 
   public static void main(String[] args) {
     Example example = new Example();
     example.playerBattleAgainstFourWavesOfMonsters();
   }
 
+  /**
+   * The method that carries out the fight of the player and monsters
+   */
   public void playerBattleAgainstFourWavesOfMonsters() {
     createPlayerAndMonstersForFourMonstersWaves();
     int i = 1;
@@ -32,6 +48,11 @@ public class Example {
     }
   }
 
+  /**
+   * The method that carries out the battle in each of the waves.
+   *
+   * @param i wave number
+   */
   private void fight(int i) {
 
     List<Creature> monstersInFight = getMonstersForFight(i);
@@ -74,7 +95,6 @@ public class Example {
       if (player.isAlive()) {
         creature.hitLog(player);
       }
-
     }
   }
 
@@ -124,11 +144,9 @@ public class Example {
 
       attack = ThreadLocalRandom.current().nextInt(1, 30 + 1);
       defense = ThreadLocalRandom.current().nextInt(1, 30 + 1);
-      maxHealth += 20;
-      damageMin += 5;
+      maxHealth += 10;
+      damageMin += 1;
       damageMax += 5;
     }
   }
-
-
 }
